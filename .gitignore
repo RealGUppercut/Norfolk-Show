@@ -1,17 +1,22 @@
 # Godot 4+ specific ignores
 .godot/
-.nomedia
+/android/
 
-# Godot-specific ignores
+# Godot 3 specific ignores (harmless to leave in)
 .import/
+
+# Imported translations (auto-regenerated)
 export.cfg
-export_credentials.cfg
-*.tmp
+export_presets.cfg.bak
 
-# Imported translations (automatically generated from CSV files)
-*.translation
+# Build output
+build/
+exports/
 
-# Mono-specific ignores
-.mono/
-data_*/
-mono_crash.*.json
+# System/editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# IMPORTANT: do NOT ignore export_presets.cfg — CI needs it
