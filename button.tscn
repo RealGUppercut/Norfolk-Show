@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://c6takejyrn2f3"]
-
-[node name="Button" type="Button" unique_id=1770206197]
-offset_right = 146.0
-offset_bottom = 75.0
-text = "hello
-"
