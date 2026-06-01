@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://crev2inf1u6xe"]
+
+[ext_resource type="Script" path="res://mainmenu.gd" id="1_7vrkn"]
+[ext_resource type="FontFile" path="res://Assets/Matcha Cih.ttf" id="2_fu7sn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_loy4s"]
+load_path = "res://.godot/imported/startmenu.png-76d730106f94a36b5b85d02dd77073c5.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loy4s"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+shadow_size = 5
+
+[node name="MainMenu" type="Node2D" unique_id=598969911]
+script = ExtResource("1_7vrkn")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1450656225]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("CompressedTexture2D_loy4s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=997782835]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.75
+offset_top = -115.0
+offset_right = 228.75
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="TextureRect/VBoxContainer" unique_id=2142815857]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_loy4s")
+text = "Start Game"
+
+[node name="Button2" type="Button" parent="TextureRect/VBoxContainer" unique_id=620408897]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_loy4s")
+text = "Options
+"
+
+[node name="Button3" type="Button" parent="TextureRect/VBoxContainer" unique_id=1966225795]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_loy4s")
+text = "Quit"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1886206249]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="." unique_id=1916589524]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -351.0
+offset_top = -366.0
+offset_right = 331.0
+offset_bottom = -175.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.082964726, 0.32064036, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 100
+text = "Phish Tank"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/Button2" to="." method="_on_settings_pressed"]
