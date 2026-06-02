@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c4hjuoqlrmiet"]
+
+[ext_resource type="Script" uid="uid://ckrwr270ku484" path="res://scripts/enemy.gd" id="1_l8dvc"]
+[ext_resource type="Texture2D" uid="uid://da1bdrpmh0me1" path="res://sprites/entities/player_net.png" id="2_l8dvc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l8dvc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o03xk"]
+
+[node name="RegularEnemy" type="Node2D" unique_id=135753716]
+
+[node name="Mob" type="RigidBody2D" parent="." unique_id=1467070847]
+gravity_scale = 0.0
+linear_velocity = Vector2(100, 0)
+constant_force = Vector2(10, 0)
+script = ExtResource("1_l8dvc")
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Mob" unique_id=1411242274]
+
+[node name="Sprite2D" type="Sprite2D" parent="Mob" unique_id=235376093]
+position = Vector2(0, 103)
+scale = Vector2(1, 0.1953125)
+texture = ExtResource("2_l8dvc")
+offset = Vector2(-20, -610)
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Mob" unique_id=1741368000]
+physics_material_override = SubResource("PhysicsMaterial_l8dvc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob/StaticBody2D" unique_id=466751028]
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_o03xk")
+disabled = true
