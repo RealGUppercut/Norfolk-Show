@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b4cayowt8oakv" path="res://scripts/player.gd" id="2_kl7gn"]
 [ext_resource type="PackedScene" uid="uid://c4hjuoqlrmiet" path="res://components/regular_enemy.tscn" id="3_0bthb"]
+[ext_resource type="Texture2D" uid="uid://da1bdrpmh0me1" path="res://sprites/entities/player_net.png" id="4_playerimg"]
 
 [sub_resource type="GDScript" id="GDScript_a7n1r"]
 script/source = "extends Node2D
@@ -25,9 +26,6 @@ func spawn_random_y():
 radius = 27.0
 height = 62.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h2yge"]
-load_path = "res://.godot/imported/player_net.png-3f233436210bb899785f7eb20a35276d.ctex"
-
 [node name="main" type="Node2D" unique_id=145034279]
 position = Vector2(586, 324)
 script = SubResource("GDScript_a7n1r")
@@ -42,7 +40,7 @@ shape = SubResource("CapsuleShape2D_0e48y")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1833719521]
-texture = SubResource("CompressedTexture2D_h2yge")
+texture = ExtResource("4_playerimg")
 offset = Vector2(15, -82)
 
 [node name="RegularEnemy" parent="." unique_id=135753716 instance=ExtResource("3_0bthb")]
