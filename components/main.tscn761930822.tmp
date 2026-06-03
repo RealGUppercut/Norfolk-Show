@@ -35,5 +35,3 @@ autostart = true
 script = ExtResource("4_kl7gn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1299052819]
-
-[connection signal="timeout" from="SpawnThings" to="SpawnThings" method="_on_timeout"]

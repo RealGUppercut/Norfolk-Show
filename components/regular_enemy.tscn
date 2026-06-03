@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4hjuoqlrmiet"]
 
 [ext_resource type="Script" uid="uid://ckrwr270ku484" path="res://scripts/enemy.gd" id="1_l8dvc"]
-[ext_resource type="Texture2D" uid="uid://da1bdrpmh0me1" path="res://sprites/entities/player_net.png" id="2_l8dvc"]
+[ext_resource type="Texture2D" uid="uid://p1tfni6e7blm" path="res://sprites/entities/fish_1.png" id="2_my5uu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l8dvc"]
 
@@ -19,11 +19,7 @@ metadata/_edit_group_ = true
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Mob" unique_id=1411242274]
 
 [node name="Sprite2D" type="Sprite2D" parent="Mob" unique_id=235376093]
-position = Vector2(0, 103)
-scale = Vector2(1, 0.1953125)
-texture = ExtResource("2_l8dvc")
-offset = Vector2(-20, -610)
-flip_h = true
+texture = ExtResource("2_my5uu")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Mob" unique_id=1741368000]
 physics_material_override = SubResource("PhysicsMaterial_l8dvc")
