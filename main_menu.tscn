@@ -3,8 +3,7 @@
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_7vrkn"]
 [ext_resource type="FontFile" path="res://Assets/Matcha Cih.ttf" id="2_fu7sn"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_loy4s"]
-load_path = "res://.godot/imported/startmenu.png-76d730106f94a36b5b85d02dd77073c5.ctex"
+[ext_resource type="Texture2D" path="res://icon.svg" id="3_placeholder"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loy4s"]
 bg_color = Color(1, 1, 1, 1)
@@ -27,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = SubResource("CompressedTexture2D_loy4s")
+texture = ExtResource("3_placeholder")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=997782835]
 layout_mode = 1
