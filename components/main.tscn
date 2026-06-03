@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cqow47bch5ocs"]
 
+[ext_resource type="Script" uid="uid://beluhoygkyy8y" path="res://scripts/main.gd" id="1_0bthb"]
+[ext_resource type="Texture2D" uid="uid://bf1wnjlwdu7hu" path="res://sprites/entities/player_net.png" id="2_eeoh7"]
 [ext_resource type="Script" uid="uid://b4cayowt8oakv" path="res://scripts/player.gd" id="2_kl7gn"]
 [ext_resource type="PackedScene" uid="uid://c4hjuoqlrmiet" path="res://components/regular_enemy.tscn" id="3_0bthb"]
 [ext_resource type="Texture2D" uid="uid://bbsh2gb3wekwt" path="res://sprites/backgrounds/gamescreen.png" id="4_kl7gn"]
@@ -29,7 +31,7 @@ height = 62.0
 
 [node name="main" type="Node2D" unique_id=145034279]
 position = Vector2(586, 324)
-script = SubResource("GDScript_a7n1r")
+script = ExtResource("1_0bthb")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1028284165]
 anchors_preset = 15
@@ -50,14 +52,31 @@ script = ExtResource("2_kl7gn")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1696420304]
+position = Vector2(-4, 20)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_0e48y")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1833719521]
+
+z_index = 5
 texture = ExtResource("4_playerimg")
 offset = Vector2(15, -82)
+[node name="MovementTime" type="Timer" parent="Player" unique_id=353361059]
+wait_time = 0.001
+
+[node name="ResetMoveSpeed" type="Timer" parent="Player" unique_id=253512167]
+wait_time = 0.2
+
 
 [node name="RegularEnemy" parent="." unique_id=135753716 instance=ExtResource("3_0bthb")]
 
 [node name="SpawnThings" type="Timer" parent="." unique_id=610287930]
+autostart = true
+script = ExtResource("4_kl7gn")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1299052819]
+
+[connection signal="timeout" from="Player/MovementTime" to="Player" method="_on_movement_time_timeout"]
+[connection signal="timeout" from="Player/ResetMoveSpeed" to="Player" method="_on_reset_move_speed_timeout"]
+[connection signal="timeout" from="SpawnThings" to="SpawnThings" method="_on_timeout"]

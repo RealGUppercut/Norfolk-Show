@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="Script" uid="uid://beluhoygkyy8y" path="res://scripts/main.gd" id="1_0bthb"]
+[ext_resource type="Texture2D" uid="uid://bf1wnjlwdu7hu" path="res://sprites/entities/player_net.png" id="2_eeoh7"]
+[ext_resource type="Script" uid="uid://b4cayowt8oakv" path="res://scripts/player.gd" id="2_kl7gn"]
+[ext_resource type="PackedScene" uid="uid://c4hjuoqlrmiet" path="res://components/regular_enemy.tscn" id="3_0bthb"]
+[ext_resource type="Script" uid="uid://di0evib43fmym" path="res://scripts/fish_spawning.gd" id="4_kl7gn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0e48y"]
+radius = 7.0
+height = 16.0
+
+[node name="main" type="Node2D" unique_id=145034279]
+position = Vector2(586, 324)
+script = ExtResource("1_0bthb")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=290607868]
+script = ExtResource("2_kl7gn")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1696420304]
+position = Vector2(-4, 20)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0e48y")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1833719521]
+z_index = 5
+texture = ExtResource("2_eeoh7")
+
+[node name="RegularEnemy" parent="." unique_id=135753716 instance=ExtResource("3_0bthb")]
+
+[node name="SpawnThings" type="Timer" parent="." unique_id=610287930]
+autostart = true
+script = ExtResource("4_kl7gn")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1299052819]
