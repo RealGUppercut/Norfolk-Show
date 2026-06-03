@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bf1wnjlwdu7hu" path="res://sprites/entities/player_net.png" id="2_eeoh7"]
 [ext_resource type="Script" uid="uid://b4cayowt8oakv" path="res://scripts/player.gd" id="2_kl7gn"]
 [ext_resource type="PackedScene" uid="uid://c4hjuoqlrmiet" path="res://components/regular_enemy.tscn" id="3_0bthb"]
+[ext_resource type="Texture2D" uid="uid://bbsh2gb3wekwt" path="res://sprites/backgrounds/gamescreen.png" id="4_kl7gn"]
 [ext_resource type="Texture2D" uid="uid://da1bdrpmh0me1" path="res://sprites/entities/player_net.png" id="4_playerimg"]
 
 [sub_resource type="GDScript" id="GDScript_a7n1r"]
@@ -31,6 +32,20 @@ height = 62.0
 [node name="main" type="Node2D" unique_id=145034279]
 position = Vector2(586, 324)
 script = ExtResource("1_0bthb")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1028284165]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -579.0
+offset_top = -325.0
+offset_right = 554.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_kl7gn")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=290607868]
 script = ExtResource("2_kl7gn")
