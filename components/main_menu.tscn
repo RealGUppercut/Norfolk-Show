@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://crev2inf1u6xe"]
 
-[ext_resource type="Script" path="res://mainmenu.gd" id="1_7vrkn"]
-[ext_resource type="FontFile" path="res://Assets/Matcha Cih.ttf" id="2_fu7sn"]
-
-[ext_resource type="Texture2D" path="res://icon.svg" id="3_placeholder"]
+[ext_resource type="Script" uid="uid://ywnuh3fcsiru" path="res://mainmenu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://bnpjsxx08otya" path="res://sprites/backgrounds/menuscreen.png" id="2_wdogw"]
+[ext_resource type="FontFile" uid="uid://t2u0dv4c3rak" path="res://sprites/entities/Matcha Cih.ttf" id="3_uw3gq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loy4s"]
 bg_color = Color(1, 1, 1, 1)
@@ -22,11 +21,13 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = -639.0
+offset_right = 1161.0
+offset_bottom = 651.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("3_placeholder")
+texture = ExtResource("2_wdogw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=997782835]
 layout_mode = 1
@@ -86,7 +87,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/shadow_outline_size = 5
-theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_fonts/font = ExtResource("3_uw3gq")
 theme_override_font_sizes/font_size = 100
 text = "Phish Tank"
 horizontal_alignment = 1
@@ -95,3 +96,5 @@ metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="TextureRect/VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="TextureRect/VBoxContainer/Button2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/Button3" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="TextureRect/VBoxContainer/Button3" to="." method="_on_quit_pressed_"]

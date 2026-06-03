@@ -1,7 +1,4 @@
-[gd_scene format=3 uid="uid://uh8dd4kfuech"]
-
-[ext_resource type="Texture2D" path="res://Assets/gamebackground.png" id="1_80nbo"]
-[ext_resource type="Texture2D" uid="uid://dqn27n1ve1pqf" path="res://player_net.png" id="2_e2o6t"]
+[gd_scene format=3 uid="uid://elst0xn32iil"]
 
 [node name="Game" type="Node2D" unique_id=1754378091]
 
@@ -9,17 +6,11 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 10.0
-offset_right = 1155.0
-offset_bottom = 674.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_80nbo")
 
 [node name="Sprite2D" type="Sprite2D" parent="TextureRect" unique_id=166459335]
 position = Vector2(923, 344)
-texture = ExtResource("2_e2o6t")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1080312999]
 position = Vector2(585, 346)
