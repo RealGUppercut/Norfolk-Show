@@ -28,6 +28,12 @@ disabled = true
 z_index = 5
 texture = ExtResource("2_eeoh7")
 
+[node name="MovementTime" type="Timer" parent="Player" unique_id=353361059]
+wait_time = 0.001
+
+[node name="ResetMoveSpeed" type="Timer" parent="Player" unique_id=253512167]
+wait_time = 0.2
+
 [node name="RegularEnemy" parent="." unique_id=135753716 instance=ExtResource("3_0bthb")]
 
 [node name="SpawnThings" type="Timer" parent="." unique_id=610287930]
@@ -36,4 +42,6 @@ script = ExtResource("4_kl7gn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1299052819]
 
+[connection signal="timeout" from="Player/MovementTime" to="Player" method="_on_movement_time_timeout"]
+[connection signal="timeout" from="Player/ResetMoveSpeed" to="Player" method="_on_reset_move_speed_timeout"]
 [connection signal="timeout" from="SpawnThings" to="SpawnThings" method="_on_timeout"]
