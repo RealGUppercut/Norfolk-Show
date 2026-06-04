@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://crev2inf1u6xe"]
 
-[ext_resource type="Script" uid="uid://ywnuh3fcsiru" path="res://mainmenu.gd" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://chufnoxyeoptk" path="res://mainmenu.gd" id="1_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://bnpjsxx08otya" path="res://sprites/backgrounds/menuscreen.png" id="2_wdogw"]
 [ext_resource type="FontFile" uid="uid://t2u0dv4c3rak" path="res://sprites/entities/Matcha Cih.ttf" id="3_uw3gq"]
 
@@ -21,10 +21,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1152.0
-offset_top = -639.0
-offset_right = 1161.0
-offset_bottom = 651.0
+offset_left = -2393.0
+offset_top = -1304.0
+offset_right = 2402.0
+offset_bottom = 1329.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_wdogw")
@@ -36,10 +36,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -228.75
-offset_top = -115.0
-offset_right = 228.75
-offset_bottom = 115.0
+offset_left = -1066.5
+offset_top = -128.5
+offset_right = 1148.5
+offset_bottom = 801.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -48,7 +48,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 215
 theme_override_styles/normal = SubResource("StyleBoxFlat_loy4s")
 text = "Start Game"
 
@@ -56,7 +56,7 @@ text = "Start Game"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 215
 theme_override_styles/normal = SubResource("StyleBoxFlat_loy4s")
 text = "Options
 "
@@ -65,21 +65,21 @@ text = "Options
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 215
 theme_override_styles/normal = SubResource("StyleBoxFlat_loy4s")
 text = "Quit"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1886206249]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.1, 0.1)
 
 [node name="Label" type="Label" parent="." unique_id=1916589524]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -351.0
-offset_top = -366.0
-offset_right = 331.0
-offset_bottom = -175.0
+offset_left = -636.0
+offset_top = -766.0
+offset_right = 750.0
+offset_bottom = -204.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.082964726, 0.32064036, 1, 1)
@@ -88,11 +88,10 @@ theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("3_uw3gq")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 350
 text = "Phish Tank"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="TextureRect/VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="TextureRect/VBoxContainer/Button2" to="." method="_on_settings_pressed"]
