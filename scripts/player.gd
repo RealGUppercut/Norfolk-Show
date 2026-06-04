@@ -1,9 +1,9 @@
 extends CharacterBody2D
-
 @export var max_speed = 300
 @export var default_speed = 100
 @export var speed = 100
 @export var time = 0
+
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
@@ -18,7 +18,8 @@ func _physics_process(delta):
 		$ResetMoveSpeed.stop()
 	get_input()
 	move_and_slide()
-
+	position.x = clamp(position.x, -225, 230)
+	position.y = clamp(position.y, -130, 120)
 
 func _on_movement_time_timeout() -> void:
 	if speed >= max_speed:
