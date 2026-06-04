@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b4cayowt8oakv" path="res://scripts/player.gd" id="2_kl7gn"]
 [ext_resource type="PackedScene" uid="uid://c4hjuoqlrmiet" path="res://components/regular_enemy.tscn" id="3_0bthb"]
 [ext_resource type="Texture2D" uid="uid://b6d0lcutv4qei" path="res://sprites/backgrounds/gamescreen.png" id="4_kl7gn"]
-[ext_resource type="Texture2D" uid="uid://bf1wnjlwdu7hu" path="res://sprites/entities/player_net.png" id="4_playerimg"]
+[ext_resource type="Texture2D" uid="uid://bjm0c1m43ohv5" path="res://sprites/entities/net.png" id="4_pdxoy"]
 [ext_resource type="Script" uid="uid://di0evib43fmym" path="res://scripts/fish_spawning.gd" id="6_pdxoy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0e48y"]
@@ -13,7 +13,6 @@ height = 62.0
 
 [node name="main" type="Node2D" unique_id=145034279]
 position = Vector2(586, 324)
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_0bthb")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1028284165]
@@ -42,8 +41,7 @@ disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1833719521]
 z_index = 5
-texture = ExtResource("4_playerimg")
-offset = Vector2(15, -82)
+texture = ExtResource("4_pdxoy")
 
 [node name="MovementTime" type="Timer" parent="Player" unique_id=353361059]
 wait_time = 0.001
