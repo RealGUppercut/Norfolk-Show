@@ -24,7 +24,7 @@ func _on_movement_time_timeout() -> void:
 	if speed >= max_speed:
 		return
 	else:
-		speed += 0.1
+		speed += 0.5
 
 func _on_reset_move_speed_timeout() -> void:
 	speed = default_speed
