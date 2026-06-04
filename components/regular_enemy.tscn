@@ -19,6 +19,7 @@ metadata/_edit_group_ = true
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Mob" unique_id=1411242274]
 
 [node name="Sprite2D" type="Sprite2D" parent="Mob" unique_id=235376093]
+z_index = 1
 texture = ExtResource("2_my5uu")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Mob" unique_id=1741368000]

@@ -12,3 +12,4 @@ extends Node2D
 	#var instance = RegularEnemy.instantiate()
 	#instance.position = Vector2(-100, y)
 	#add_child(instance)
+	
