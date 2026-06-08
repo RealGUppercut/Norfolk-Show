@@ -36,7 +36,7 @@ func spawn_random_y(AmountToSpawn):
 		if IsEnemy == 2:
 			var randNumber = randi_range(1, 4)
 			var StrongEnemy = randi_range(0, 3)
-			
+
 			if StrongEnemy == 3:
 				instance = EnemyList.pick_random().instantiate()
 			else:
