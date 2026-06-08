@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://00l5jc7ri33a"]
+
+[ext_resource type="Script" uid="uid://cy6pncaq0kol6" path="res://components/game_over.gd" id="1_evja8"]
+[ext_resource type="Shader" uid="uid://ibgkyj8h8fl3" path="res://scripts/game_over.gdshader" id="1_wojql"]
+[ext_resource type="Texture2D" uid="uid://dgosmj3vjdcm8" path="res://sprites/backgrounds/gamescreen.png" id="2_bghl0"]
+[ext_resource type="FontFile" uid="uid://dqb2phgc0ixhw" path="res://Assets/Matcha Cih.ttf" id="3_bghl0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ccer4"]
+shader = ExtResource("1_wojql")
+shader_parameter/scroll_speed = 0.08000009879999981
+
+[node name="GameOver" type="Node2D" unique_id=1569361523]
+script = ExtResource("1_evja8")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1739288944]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ccer4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_right = 658.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_bghl0")
+
+[node name="Label" type="Label" parent="." unique_id=923073634]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 98.0
+offset_top = 25.0
+offset_right = 393.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.84, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bghl0")
+theme_override_font_sizes/font_size = 46
+text = "GAME OVER"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1248668112]
+offset_left = 183.0
+offset_top = 87.0
+offset_right = 313.0
+offset_bottom = 135.0
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
+
+[node name="Retry" type="Button" parent="." unique_id=1155383274]
+offset_left = 166.0
+offset_top = 140.0
+offset_right = 330.0
+offset_bottom = 189.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 19
+text = "Retry
+"
+
+[node name="return_to_menu" type="Button" parent="." unique_id=613538204]
+offset_left = 168.0
+offset_top = 200.0
+offset_right = 329.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 19
+text = "Return to menu"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="return_to_menu" to="." method="_on_return_to_menu_pressed"]
