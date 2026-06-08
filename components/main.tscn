@@ -106,6 +106,10 @@ offset_right = -66.0
 offset_bottom = -71.0
 texture = ExtResource("6_5nrm8")
 
+[node name="DifficultyScaler" type="Timer" parent="." unique_id=1038168362]
+autostart = true
+
 [connection signal="timeout" from="Player/MovementTime" to="Player" method="_on_movement_time_timeout"]
 [connection signal="timeout" from="Player/ResetMoveSpeed" to="Player" method="_on_reset_move_speed_timeout"]
 [connection signal="timeout" from="SpawnThings" to="SpawnThings" method="_on_timeout"]
+[connection signal="timeout" from="DifficultyScaler" to="SpawnThings" method="_on_difficulty_scaler_timeout"]
