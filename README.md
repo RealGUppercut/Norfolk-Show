@@ -51,8 +51,8 @@ This is how every real software team works. Get used to it now.
 
 Every session starts here. No exceptions.
 
-    git checkout main
-    git pull
+	git checkout main
+	git pull
 
 This makes sure you're starting from the most up-to-date version everyone else
 has merged.
@@ -61,7 +61,7 @@ has merged.
 
 Pick a short name describing what you're doing. Use hyphens, no spaces.
 
-    git checkout -b feature/jump-animation
+	git checkout -b feature/jump-animation
 
 Good names:
 
@@ -78,12 +78,12 @@ Open Godot. Make your changes. Save.
 
 ### 4. See what you changed
 
-    git status
+	git status
 
 ### 5. Stage and commit
 
-    git add .
-    git commit -m "Added jump animation states to player"
+	git add .
+	git commit -m "Added jump animation states to player"
 
 Commit messages must describe what you did. Be specific.
 
@@ -94,12 +94,12 @@ You can commit as many times as you want before pushing. Commit small chunks
 
 First time pushing this branch:
 
-    git push -u origin feature/jump-animation
+	git push -u origin feature/jump-animation
 
 The `-u origin feature/jump-animation` tells Git "remember where this branch
 lives". After the first push, you can just type:
 
-    git push
+	git push
 
 ### 7. Open a pull request
 
@@ -156,14 +156,14 @@ You'll be asked to review teammates' PRs. To do it properly:
 2.  Click "Files changed" — read what they changed.
 3.  If you want to actually run their code:
 
-        git fetch
-        git checkout feature/their-branch-name
+		git fetch
+		git checkout feature/their-branch-name
 
-    Open Godot, test it.
+	Open Godot, test it.
 
 4.  Back on the PR page, click "Review changes" (top right):
-    - **Approve** if it works and looks good.
-    - **Request changes** if something's broken or wrong.
+	- **Approve** if it works and looks good.
+	- **Request changes** if something's broken or wrong.
     - **Comment** if you want to ask a question without blocking.
 
 Don't rubber-stamp approve. If you don't understand what the PR does, ask
@@ -178,7 +178,7 @@ the author to explain in the PR comments. That's part of the point.
 Someone pushed to the same branch as you (rare, but happens on shared
 branches). Fix:
 
-    git pull
+	git pull
 
 Then push again.
 
@@ -189,10 +189,10 @@ GitHub will show "This branch has conflicts that must be resolved".
 
 Fix:
 
-    git checkout main
-    git pull
-    git checkout feature/your-branch
-    git merge main
+	git checkout main
+	git pull
+	git checkout feature/your-branch
+	git merge main
 
 Git will tell you which files have conflicts. Open each one — you'll see:
 
