@@ -1,11 +1,10 @@
-[gd_scene format=3 uid="uid://c4hjuoqlrmiet"]
+[gd_scene format=3 uid="uid://qbqr4ky874d6"]
 
-[ext_resource type="Script" uid="uid://ckrwr270ku484" path="res://scripts/enemy.gd" id="1_hdtye"]
+[ext_resource type="Script" uid="uid://dc06vrmqfghsl" path="res://scripts/fish/mob.gd" id="1_vssqj"]
 [ext_resource type="Texture2D" uid="uid://p1tfni6e7blm" path="res://sprites/entities/fish_1.png" id="2_vssqj"]
 [ext_resource type="Script" uid="uid://c77mw4acurr26" path="res://scripts/fish/regular_fish.gd" id="3_vssqj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_my5uu"]
-radius = 7.071068
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vssqj"]
 
 [node name="RegularFish" type="Node2D" unique_id=135753716]
 
@@ -13,7 +12,7 @@ radius = 7.071068
 gravity_scale = 0.0
 linear_velocity = Vector2(100, 0)
 constant_force = Vector2(10, 0)
-script = ExtResource("1_hdtye")
+script = ExtResource("1_vssqj")
 metadata/_edit_group_ = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Mob" unique_id=1411242274]
@@ -26,7 +25,8 @@ texture = ExtResource("2_vssqj")
 collision_layer = 2
 script = ExtResource("3_vssqj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob/Area2D" unique_id=1736909532]
-shape = SubResource("CircleShape2D_my5uu")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob/Area2D" unique_id=401206479]
+shape = SubResource("CapsuleShape2D_vssqj")
 
-[connection signal="body_entered" from="Mob/Area2D" to="Mob/Area2D" method="_on_body_entered"]
+[connection signal="screen_exited" from="Mob/VisibleOnScreenNotifier2D" to="Mob" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Mob/Area2D" to="Mob" method="_on_area_2d_body_entered"]
