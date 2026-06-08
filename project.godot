@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="New Game Project"
-run/main_scene="uid://crev2inf1u6xe"
+run/main_scene="uid://cqow47bch5ocs"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameData="*uid://bk4211rvwkajx"
+GameEvent="*uid://dua5rafw87tqb"
 
 [display]
 
@@ -54,6 +55,7 @@ down={
 
 [rendering]
 
+rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 2d/snap/snap_2d_transforms_to_pixel=true

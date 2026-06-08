@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var test_value = 123
+
 @export var max_speed = 300
 @export var default_speed = 100
 @export var speed = 100
@@ -10,8 +12,10 @@ var net_grow_amount = 0.3
 var max_net_scale = Vector2(2.5, 2.5)
 
 func _ready():
-	GameEvent.net_powerup.connect(_on_net_powerup)
 	print("=== PLAYER READY ===")
+	GameEvent.net_powerup.connect(_on_net_powerup)
+	GameEvent.speed_powerup.connect(_on_speed_powerup)
+	print("=== PLAYER SIGNALS CONNECTED ===")
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -40,6 +44,7 @@ func _on_net_powerup():
 
 	if has_node("CollisionShape2D"):
 		$CollisionShape2D.scale = net_scale
+
 	if has_node("Sprite2D"):
 		$Sprite2D.scale = net_scale
 
@@ -51,14 +56,27 @@ func _on_net_powerup():
 
 	if has_node("CollisionShape2D"):
 		$CollisionShape2D.scale = net_scale
+
 	if has_node("Sprite2D"):
 		$Sprite2D.scale = net_scale
 
 	print("Net returned to normal")
 
+func _on_speed_powerup():
+	print("=== SPEED SIGNAL RECEIVED ===")
+	speed = max_speed
+	print("Speed boost!")
+
+	await get_tree().create_timer(5.0).timeout
+	speed = default_speed
+	print("Speed returned to normal")
+
 func _on_movement_time_timeout() -> void:
-	if speed < max_speed:
+	if speed >= max_speed:
+		return
+	else:
 		speed += 0.5
 
 func _on_reset_move_speed_timeout() -> void:
 	speed = default_speed
+	print("=== ROOT player.gd LOADED ===")

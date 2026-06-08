@@ -1,9 +1,28 @@
 extends Node2D
+
 var score = 0
 var lives = 5
+var max_lives = 5
 
 func _ready():
 	$ScoreLabel.text = "0"
+	GameEvent.score_added.connect(_on_score_added)
+	GameEvent.heart_powerup.connect(_on_heart_powerup)
+	print("=== MAIN READY ===")
+
+func _on_score_added(amount):
+	score += amount
+	$ScoreLabel.text = str(score)
+
+func _on_heart_powerup():
+	if lives < max_lives:
+		lives += 1
+		get_node("Heart" + str(lives)).visible = true
+		print("Heart restored! Lives: ", lives)
+	else:
+		score += 5
+		$ScoreLabel.text = str(score)
+		print("Full health! Bonus points instead!")
 
 func add_score():
 	score += 3
