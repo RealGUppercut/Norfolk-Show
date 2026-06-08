@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://dgum4ljo6rfna"]
 
-[ext_resource type="Script" uid="uid://ckrwr270ku484" path="res://scripts/mob.gd" id="1_l8dvc"]
+[ext_resource type="Script" uid="uid://dc06vrmqfghsl" path="res://scripts/fish/basic_bad_fish.gd" id="1_ik2ra"]
 [ext_resource type="Texture2D" uid="uid://p1tfni6e7blm" path="res://sprites/entities/fish_1.png" id="2_my5uu"]
+[ext_resource type="Script" uid="uid://c77mw4acurr26" path="res://scripts/fish/catching.gd" id="3_3mu0x"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l8dvc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o03xk"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vssqj"]
 
 [node name="RegularEnemy" type="Node2D" unique_id=135753716]
 
@@ -13,7 +12,7 @@
 gravity_scale = 0.0
 linear_velocity = Vector2(100, 0)
 constant_force = Vector2(10, 0)
-script = ExtResource("1_l8dvc")
+script = ExtResource("1_ik2ra")
 metadata/_edit_group_ = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Mob" unique_id=1411242274]
@@ -22,10 +21,12 @@ metadata/_edit_group_ = true
 z_index = 1
 texture = ExtResource("2_my5uu")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Mob" unique_id=1741368000]
-physics_material_override = SubResource("PhysicsMaterial_l8dvc")
+[node name="Area2D" type="Area2D" parent="Mob" unique_id=562612597]
+collision_layer = 2
+script = ExtResource("3_3mu0x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob/StaticBody2D" unique_id=466751028]
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_o03xk")
-disabled = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mob/Area2D" unique_id=401206479]
+shape = SubResource("CapsuleShape2D_vssqj")
+
+[connection signal="screen_exited" from="Mob/VisibleOnScreenNotifier2D" to="Mob" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Mob/Area2D" to="Mob" method="_on_area_2d_body_entered"]
