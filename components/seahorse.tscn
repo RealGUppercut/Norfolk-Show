@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ckow4836y8d1q"]
+
+[ext_resource type="Script" uid="uid://c5rkmlruwi4s4" path="res://scripts/seahorse.gd" id="1_srbow"]
+[ext_resource type="Texture2D" uid="uid://bjbeem6h8tgl7" path="res://sprites/entities/seahorse.png" id="2_cgkb8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_713yu"]
+
+[node name="Seahorse" type="RigidBody2D" unique_id=1435334904]
+script = ExtResource("1_srbow")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=948335197]
+texture = ExtResource("2_cgkb8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1977145183]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2000060650]
+shape = SubResource("CapsuleShape2D_713yu")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Area2D/CollisionShape2D" unique_id=847358262]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
