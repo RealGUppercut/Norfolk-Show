@@ -75,6 +75,6 @@ func roll_fish_type():
 		return 0  # REGULAR
 
 func _on_difficulty_scaler_timeout() -> void:
-	DifficultyScale += 0.05
+	DifficultyScale += 0.01
 	if SpawnTimeDefault / DifficultyScale > 0.5:
 		$".".wait_time = SpawnTimeDefault / DifficultyScale
