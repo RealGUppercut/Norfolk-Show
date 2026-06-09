@@ -10,13 +10,22 @@ var fish_type = FishType.REGULAR
 
 var type_colors = {
 	FishType.REGULAR: Color(1, 1, 1),
-	FishType.NET: Color(0.82, 0.075, 1.0, 1.0),
-	FishType.HEART: Color(0.341, 0.157, 1.0, 1.0),
+	FishType.NET: Color(2.0, 2.0, 0.0),
+	FishType.HEART: Color(2.0, 0.4, 0.6),
 }
+
+var pulse_speed = 4.0
+var pulse_amount = 0.15
+var base_scale = Vector2(1, 1)
 
 func _ready():
 	$Sprite2D.modulate = type_colors[fish_type]
-
+	
+func _process(delta: float) -> void:
+	if fish_type != FishType.REGULAR:
+		var pulse = 1.0 + sin(Time.get_ticks_msec() * 0.005 * pulse_speed) * pulse_amount
+		$Sprite2D.scale = base_scale * pulse
+		
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	if fish_type == FishType.REGULAR:
 		get_tree().get_root().get_node("main").miss_fish()
