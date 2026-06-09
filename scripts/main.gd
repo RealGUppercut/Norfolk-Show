@@ -8,6 +8,7 @@ func _ready():
 	$ScoreLabel.text = "0"
 	GameEvent.score_added.connect(_on_score_added)
 	GameEvent.heart_powerup.connect(_on_heart_powerup)
+	GameEvent.life_lost.connect(lose_life)
 	print("=== MAIN READY ===")
 
 func _on_score_added(amount):
