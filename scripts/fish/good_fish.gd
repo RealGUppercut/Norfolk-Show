@@ -19,7 +19,7 @@ func _ready():
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	if fish_type == FishType.REGULAR:
-		get_tree().get_root().get_node("main").lose_life()
+		get_tree().get_root().get_node("main").miss_fish()
 	queue_free()
 
 func _on_area_2d_body_entered(body):

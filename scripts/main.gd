@@ -35,6 +35,11 @@ func lose_life():
 	if lives <= 0:
 		game_over()
 
+func miss_fish():
+	score = max(0, score - 1)
+	$ScoreLabel.text = str(score)
+	print("fish missed, score: " + str(score))
+
 func game_over():
 	GameData.final_score = score
 	get_tree().change_scene_to_file("res://components/game_over.tscn")
