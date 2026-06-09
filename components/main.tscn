@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bjm0c1m43ohv5" path="res://sprites/entities/net.png" id="4_pdxoy"]
 [ext_resource type="Texture2D" uid="uid://dl8nl2gy5n6qt" path="res://sprites/entities/Heart.png" id="6_5nrm8"]
 [ext_resource type="Script" uid="uid://di0evib43fmym" path="res://scripts/fish_spawning.gd" id="6_pdxoy"]
+[ext_resource type="AudioStream" uid="uid://uco1ltrjuv23" path="res://Assets/goodfishsound.mp3" id="8_q15wk"]
+[ext_resource type="AudioStream" uid="uid://de3lk2uh2yt86" path="res://Assets/badfishsound.mp3" id="9_vdvw4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0e48y"]
 height = 22.0
@@ -108,6 +110,12 @@ texture = ExtResource("6_5nrm8")
 
 [node name="DifficultyScaler" type="Timer" parent="." unique_id=1038168362]
 autostart = true
+
+[node name="GoodFishSound" type="AudioStreamPlayer2D" parent="." unique_id=176482484]
+stream = ExtResource("8_q15wk")
+
+[node name="BadFishSound" type="AudioStreamPlayer2D" parent="." unique_id=547017562]
+stream = ExtResource("9_vdvw4")
 
 [connection signal="timeout" from="Player/MovementTime" to="Player" method="_on_movement_time_timeout"]
 [connection signal="timeout" from="Player/ResetMoveSpeed" to="Player" method="_on_reset_move_speed_timeout"]

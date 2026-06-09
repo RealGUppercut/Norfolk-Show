@@ -13,6 +13,7 @@ func _ready():
 func _on_score_added(amount):
 	score += amount
 	$ScoreLabel.text = str(score)
+	$GoodFishSound.play()
 
 func _on_heart_powerup():
 	if lives < max_lives:
@@ -32,11 +33,12 @@ func lose_life():
 	print("lose life called, lives remaining: " + str(lives))
 	lives -= 1
 	get_node("Heart" + str(lives + 1)).visible = false
+	$BadFishSound.play()
 	if lives <= 0:
 		game_over()
 
 func miss_fish():
-	score = max(0, score - 1)
+	score = max(0, score - 2)
 	$ScoreLabel.text = str(score)
 	print("fish missed, score: " + str(score))
 
