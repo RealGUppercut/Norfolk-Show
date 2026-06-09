@@ -13,14 +13,14 @@ func on_caught():
 		GameEvent.score_added.emit(10)
 		spawn_mini_seahorses()
 	else:
-		GameEvent.score_added.emit(5)
+		GameEvent.life_lost.emit()
 		queue_free()
 
 func spawn_mini_seahorses():
 	for i in range(5):
 		var mini = load("res://components/seahorse.tscn").instantiate()
 		mini.is_mini = true
-		mini.position = position + Vector2(randf_range(-50, 50), randf_range(-50, 50))
+		mini.position = Vector2(-250, randf_range(-100, 100))
 		mini.linear_velocity = Vector2(randf_range(60, 120), randf_range(-30, 30))
 		get_parent().add_child(mini)
 	queue_free()
