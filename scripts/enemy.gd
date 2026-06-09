@@ -12,7 +12,7 @@ var fish_type = FishType.REGULAR
 var type_colors = {
 	FishType.REGULAR: Color(1, 1, 1),
 	FishType.NET: Color(0.2, 1, 0.2),
-	FishType.HEART: Color(1, 0.5, 0.8),
+	FishType.HEART: Color(0.955, 0.613, 0.21, 1.0),
 	FishType.SPEED: Color(0.3, 0.5, 1),
 }
 
@@ -35,4 +35,9 @@ func on_caught():
 	queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	match fish_type:
+		FishType.REGULAR:
+			get_tree().get_root().get_node("main").miss_fish()
+		FishType.NET, FishType.HEART, FishType.SPEED:
+			pass
 	queue_free()
