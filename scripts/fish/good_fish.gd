@@ -10,8 +10,8 @@ var fish_type = FishType.REGULAR
 
 var type_colors = {
 	FishType.REGULAR: Color(1, 1, 1),
-	FishType.NET: Color(0.2, 1, 0.2),
-	FishType.HEART: Color(1, 0.5, 0.8),
+	FishType.NET: Color(0.82, 0.075, 1.0, 1.0),
+	FishType.HEART: Color(0.341, 0.157, 1.0, 1.0),
 }
 
 func _ready():
