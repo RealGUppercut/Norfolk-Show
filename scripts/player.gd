@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @export var max_speed = 350
 @export var default_speed = 150
 @export var speed = 150
@@ -8,6 +9,8 @@ extends CharacterBody2D
 var net_scale = Vector2(1, 1)
 var net_grow_amount = 0.3
 var max_net_scale = Vector2(2.5, 2.5)
+
+var net_powerup_id = 0
 
 func _ready():
 	GameEvent.net_powerup.connect(_on_net_powerup)
@@ -44,8 +47,14 @@ func _on_net_powerup():
 		$Sprite2D.scale = net_scale
 
 	print("Net grew! New scale: ", net_scale)
+	
+	net_powerup_id += 1
+	var current_power_up_id = net_powerup_id
 
 	await get_tree().create_timer(10.0).timeout
+	
+	if current_power_up_id != net_powerup_id:
+		return
 
 	net_scale = Vector2(1, 1)
 
