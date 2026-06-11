@@ -20,8 +20,8 @@ var net_chance = 8
 
 var mantaray_chance = 10
 
-var seahorse_chance = 7
-var whale_chance = 7
+var seahorse_chance = 10
+var whale_chance = 10
 
 
 func _on_timeout() -> void:
@@ -57,7 +57,7 @@ func spawn_random_y(AmountToSpawn):
 				get_parent().add_child(seahorse)
 				y_offset += randi_range(30, 100)
 				continue
-			if fish_type == 5:
+			elif fish_type == 5:
 				var mantaRay = MantaRay.instantiate()
 				var y_pos = y + y_offset
 				y_pos = wrapf(y_pos, -100, 100)
@@ -93,10 +93,10 @@ func roll_fish_type():
 		return 1  # NET
 	elif roll <= heart_chance + net_chance + seahorse_chance:
 		return 3  # SEAHORSE
-	elif roll <= heart_chance + net_chance + mantaray_chance:
-		return 5  # MANTA
 	elif roll <= heart_chance + net_chance + seahorse_chance + whale_chance:
 		return 4  # WHALE
+	elif roll <= heart_chance + net_chance + seahorse_chance + whale_chance + mantaray_chance:
+		return 5  # MANTA
 	else:
 		return 0  # REGULAR
 

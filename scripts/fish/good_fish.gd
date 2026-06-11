@@ -19,7 +19,8 @@ var pulse_amount = 0.15
 var base_scale = Vector2(1, 1)
 
 func _ready():
-	$Sprite2D.modulate = type_colors[fish_type]
+	if fish_type != 5:
+		$Sprite2D.modulate = type_colors[fish_type]
 	
 func _process(delta: float) -> void:
 	if fish_type != FishType.REGULAR:
