@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkr544kgre3bb" path="res://scripts/fish/good_fish.gd" id="1_vssqj"]
 [ext_resource type="Texture2D" uid="uid://p1tfni6e7blm" path="res://sprites/entities/fish_1.png" id="2_vssqj"]
-[ext_resource type="Script" path="res://scripts/fish/catching.gd" id="3_vssqj"]
+[ext_resource type="Script" uid="uid://c77mw4acurr26" path="res://scripts/fish/catching.gd" id="3_vssqj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vssqj"]
 

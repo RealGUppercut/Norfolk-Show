@@ -4,17 +4,25 @@ var textures = ["res://sprites/entities/fish_1.png"]
 var RegularFish: PackedScene = load("res://components/regular_fish.tscn")
 var RegularEnemy: PackedScene = load("res://components/regular_enemy.tscn")
 var Seahorse: PackedScene = load("res://components/seahorse.tscn")
+
 var MantaRay: PackedScene = load("res://components/manta_ray.tscn")
+
+var Whale: PackedScene = load("res://components/whale.tscn")
+
 
 var SpawnTimeDefault = 2
 var DifficultyScale = 1
 var FishSpeed = 10
 
-# Powerup chances out of 100
+# Spawn rates out of 100
 var heart_chance = 5
 var net_chance = 8
-var seahorse_chance = 10
+
 var mantaray_chance = 10
+
+var seahorse_chance = 7
+var whale_chance = 7
+
 
 func _on_timeout() -> void:
 	if DifficultyScale >= 1 and DifficultyScale < 2:
@@ -36,8 +44,10 @@ func spawn_random_y(AmountToSpawn):
 			var sprite = instance.get_node("Mob/Sprite2D")
 			sprite.texture = load("res://sprites/entities/fish_%d.png" % randNumber)
 		else:
+
 			
 			# checks to spawn seahorse
+
 			var fish_type = roll_fish_type()
 			if fish_type == 3:
 				var seahorse = Seahorse.instantiate()
@@ -53,6 +63,13 @@ func spawn_random_y(AmountToSpawn):
 				y_pos = wrapf(y_pos, -100, 100)
 				mantaRay.position = Vector2(-250, y_pos)
 				get_parent().add_child(mantaRay)
+			elif fish_type == 4:
+				print("spawning whale!")
+				var whale = Whale.instantiate()
+				var y_pos = y + y_offset
+				y_pos = wrapf(y_pos, -100, 100)
+				whale.position = Vector2(-250, y_pos)
+				get_parent().add_child(whale)
 				y_offset += randi_range(30, 100)
 				continue
 			instance = RegularFish.instantiate()
@@ -78,6 +95,8 @@ func roll_fish_type():
 		return 3  # SEAHORSE
 	elif roll <= heart_chance + net_chance + mantaray_chance:
 		return 5  # MANTA
+	elif roll <= heart_chance + net_chance + seahorse_chance + whale_chance:
+		return 4  # WHALE
 	else:
 		return 0  # REGULAR
 
