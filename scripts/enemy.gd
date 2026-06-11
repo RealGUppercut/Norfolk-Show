@@ -4,28 +4,20 @@ enum FishType {
 	REGULAR,
 	NET,
 	HEART,
+	SPEED
 }
 
 var fish_type = FishType.REGULAR
 
 var type_colors = {
-	FishType.REGULAR: Color(1.0, 1.0, 1.0),      
-	FishType.NET:     Color(2.0, 2.0, 0.0),      
-	FishType.HEART:   Color(2.0, 0.4, 0.6),      
+	FishType.REGULAR: Color(1, 1, 1),
+	FishType.NET: Color(0.2, 1, 0.2),
+	FishType.HEART: Color(0.955, 0.613, 0.21, 1.0),
+	FishType.SPEED: Color(0.3, 0.5, 1),
 }
-
-var pulse_speed = 4.0
-var pulse_amount = 0.15
-var base_scale = Vector2(1, 1)
 
 func _ready() -> void:
 	$Sprite2D.modulate = type_colors[fish_type]
-	base_scale = $Sprite2D.scale
-
-func _process(delta: float) -> void:
-	if fish_type != FishType.REGULAR:
-		var pulse = 1.0 + sin(Time.get_ticks_msec() * 0.005 * pulse_speed) * pulse_amount
-		$Sprite2D.scale = base_scale * pulse
 
 func on_caught():
 	match fish_type:
@@ -34,17 +26,18 @@ func on_caught():
 		FishType.NET:
 			GameEvent.score_added.emit(1)
 			GameEvent.net_powerup.emit()
-			print("NET powerup collected!")
 		FishType.HEART:
 			GameEvent.score_added.emit(1)
 			GameEvent.heart_powerup.emit()
-			print("HEART powerup collected!")
+		FishType.SPEED:
+			GameEvent.score_added.emit(1)
+			GameEvent.speed_powerup.emit()
 	queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	match fish_type:
 		FishType.REGULAR:
 			get_tree().get_root().get_node("main").miss_fish()
-		FishType.NET, FishType.HEART:
+		FishType.NET, FishType.HEART, FishType.SPEED:
 			pass
 	queue_free()
