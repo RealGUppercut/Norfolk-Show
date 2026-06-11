@@ -1,18 +1,18 @@
 extends RigidBody2D
 
-@export var speed = 75
+"res://sprites/entities/spearfish.png"
+
+@export var base_speed = 175
 
 func _ready():
 	gravity_scale = 0
-	linear_damp = 0
-	linear_velocity = Vector2(speed, 0)
+	# get player y position
+	var player = get_tree().get_root().get_node("main/Player")
+	if player:
+		position.y = player.position.y
+	linear_velocity = Vector2(base_speed * 1.75, 0)
 
 func on_caught():
-	var main = get_tree().get_root().get_node("main")
-	if main:
-		main.get_node("SpecialFishSound").play()
-	GameEvent.life_lost.emit()
-	GameEvent.life_lost.emit()
 	GameEvent.life_lost.emit()
 	queue_free()
 

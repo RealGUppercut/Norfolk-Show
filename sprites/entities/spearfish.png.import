@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://11ir328eup55"
-path="res://.godot/imported/Manta_Ray_Big_Done.png-1da911bebe1c24d07ed2986c47679264.ctex"
+uid="uid://7wqp57t4r1hi"
+path="res://.godot/imported/spearfish.png-e2b0707b2a0c498ac72acfb764bf310a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/entities/Manta_Ray_Big_Done.png"
-dest_files=["res://.godot/imported/Manta_Ray_Big_Done.png-1da911bebe1c24d07ed2986c47679264.ctex"]
+source_file="res://sprites/entities/spearfish.png"
+dest_files=["res://.godot/imported/spearfish.png-e2b0707b2a0c498ac72acfb764bf310a.ctex"]
 
 [params]
 

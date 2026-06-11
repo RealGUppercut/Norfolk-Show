@@ -1,28 +1,23 @@
 extends Timer
-
 var textures = ["res://sprites/entities/fish_1.png"]
 var RegularFish: PackedScene = load("res://components/regular_fish.tscn")
 var RegularEnemy: PackedScene = load("res://components/regular_enemy.tscn")
 var Seahorse: PackedScene = load("res://components/seahorse.tscn")
-
+var Spearfish: PackedScene = load("res://components/spearfish.tscn")
 var MantaRay: PackedScene = load("res://components/manta_ray.tscn")
-
 var Whale: PackedScene = load("res://components/whale.tscn")
-
 
 var SpawnTimeDefault = 2
 var DifficultyScale = 1
 var FishSpeed = 10
 
 # Spawn rates out of 100
-var heart_chance = 5
-var net_chance = 8
-
-var mantaray_chance = 10
-
-var seahorse_chance = 10
-var whale_chance = 10
-
+var heart_chance = 7
+var net_chance = 5
+var mantaray_chance = 7
+var spearfish_chance = 8
+var seahorse_chance = 7
+var whale_chance = 6
 
 func _on_timeout() -> void:
 	if DifficultyScale >= 1 and DifficultyScale < 2:
@@ -44,10 +39,6 @@ func spawn_random_y(AmountToSpawn):
 			var sprite = instance.get_node("Mob/Sprite2D")
 			sprite.texture = load("res://sprites/entities/fish_%d.png" % randNumber)
 		else:
-
-			
-			# checks to spawn seahorse
-
 			var fish_type = roll_fish_type()
 			if fish_type == 3:
 				var seahorse = Seahorse.instantiate()
@@ -57,12 +48,6 @@ func spawn_random_y(AmountToSpawn):
 				get_parent().add_child(seahorse)
 				y_offset += randi_range(30, 100)
 				continue
-			elif fish_type == 5:
-				var mantaRay = MantaRay.instantiate()
-				var y_pos = y + y_offset
-				y_pos = wrapf(y_pos, -100, 100)
-				mantaRay.position = Vector2(-250, y_pos)
-				get_parent().add_child(mantaRay)
 			elif fish_type == 4:
 				print("spawning whale!")
 				var whale = Whale.instantiate()
@@ -70,6 +55,23 @@ func spawn_random_y(AmountToSpawn):
 				y_pos = wrapf(y_pos, -100, 100)
 				whale.position = Vector2(-250, y_pos)
 				get_parent().add_child(whale)
+				y_offset += randi_range(30, 100)
+				continue
+			elif fish_type == 5:
+				var mantaRay = MantaRay.instantiate()
+				var y_pos = y + y_offset
+				y_pos = wrapf(y_pos, -100, 100)
+				mantaRay.position = Vector2(-250, y_pos)
+				get_parent().add_child(mantaRay)
+				y_offset += randi_range(30, 100)
+				continue
+			elif fish_type == 6:
+				print("spawning spearfish!")
+				var spearfish = Spearfish.instantiate()
+				var y_pos = y + y_offset
+				y_pos = wrapf(y_pos, -100, 100)
+				spearfish.position = Vector2(-250, y_pos)
+				get_parent().add_child(spearfish)
 				y_offset += randi_range(30, 100)
 				continue
 			instance = RegularFish.instantiate()
@@ -96,11 +98,13 @@ func roll_fish_type():
 	elif roll <= heart_chance + net_chance + seahorse_chance + whale_chance:
 		return 4  # WHALE
 	elif roll <= heart_chance + net_chance + seahorse_chance + whale_chance + mantaray_chance:
-		return 5  # MANTA
+		return 5  # MANTA RAY
+	elif roll <= heart_chance + net_chance + seahorse_chance + whale_chance + mantaray_chance + spearfish_chance:
+		return 6  # SPEARFISH
 	else:
 		return 0  # REGULAR
 
 func _on_difficulty_scaler_timeout() -> void:
-	DifficultyScale += 0.01
+	DifficultyScale += 0.02
 	if SpawnTimeDefault / DifficultyScale > 0.5:
 		$".".wait_time = SpawnTimeDefault / DifficultyScale
