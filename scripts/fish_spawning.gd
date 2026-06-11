@@ -4,11 +4,11 @@ var textures = ["res://sprites/entities/fish_1.png"]
 var RegularFish: PackedScene = load("res://components/regular_fish.tscn")
 var RegularEnemy: PackedScene = load("res://components/regular_enemy.tscn")
 var Seahorse: PackedScene = load("res://components/seahorse.tscn")
+
+var MantaRay: PackedScene = load("res://components/manta_ray.tscn")
+
 var Whale: PackedScene = load("res://components/whale.tscn")
 
-var EnemyList = [
-	load("res://components/regular_enemy.tscn"),  
-]
 
 var SpawnTimeDefault = 2
 var DifficultyScale = 1
@@ -17,8 +17,12 @@ var FishSpeed = 10
 # Spawn rates out of 100
 var heart_chance = 5
 var net_chance = 8
+
+var mantaray_chance = 10
+
 var seahorse_chance = 7
 var whale_chance = 7
+
 
 func _on_timeout() -> void:
 	if DifficultyScale >= 1 and DifficultyScale < 2:
@@ -36,14 +40,14 @@ func spawn_random_y(AmountToSpawn):
 		var IsEnemy = randi_range(0, 2)
 		if IsEnemy == 2:
 			var randNumber = randi_range(1, 4)
-			var StrongEnemy = randi_range(0, 3)
-			if StrongEnemy == 3:
-				instance = EnemyList.pick_random().instantiate()
-			else:
-				instance = RegularEnemy.instantiate()
-				var sprite = instance.get_node("Mob/Sprite2D")
-				sprite.texture = load("res://sprites/entities/fish_%d.png" % randNumber)
+			instance = RegularEnemy.instantiate()
+			var sprite = instance.get_node("Mob/Sprite2D")
+			sprite.texture = load("res://sprites/entities/fish_%d.png" % randNumber)
 		else:
+
+			
+			# checks to spawn seahorse
+
 			var fish_type = roll_fish_type()
 			if fish_type == 3:
 				var seahorse = Seahorse.instantiate()
@@ -53,6 +57,12 @@ func spawn_random_y(AmountToSpawn):
 				get_parent().add_child(seahorse)
 				y_offset += randi_range(30, 100)
 				continue
+			if fish_type == 5:
+				var mantaRay = MantaRay.instantiate()
+				var y_pos = y + y_offset
+				y_pos = wrapf(y_pos, -100, 100)
+				mantaRay.position = Vector2(-250, y_pos)
+				get_parent().add_child(mantaRay)
 			elif fish_type == 4:
 				print("spawning whale!")
 				var whale = Whale.instantiate()
@@ -83,6 +93,8 @@ func roll_fish_type():
 		return 1  # NET
 	elif roll <= heart_chance + net_chance + seahorse_chance:
 		return 3  # SEAHORSE
+	elif roll <= heart_chance + net_chance + mantaray_chance:
+		return 5  # MANTA
 	elif roll <= heart_chance + net_chance + seahorse_chance + whale_chance:
 		return 4  # WHALE
 	else:

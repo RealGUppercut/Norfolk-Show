@@ -11,7 +11,6 @@ func _ready():
 func on_caught():
 	if not is_mini:
 		get_tree().get_root().get_node("main").get_node("SpecialFishSound").play()
-		GameEvent.score_added.emit(10)
 		spawn_mini_seahorses()
 	else:
 		GameEvent.life_lost.emit()
