@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cfwh4ej8tiuxs"]
+
+[ext_resource type="Script" uid="uid://lk4k4tymd5js" path="res://scripts/whale.gd" id="1_qwrlh"]
+[ext_resource type="Texture2D" uid="uid://sqvb7k7p7knx" path="res://sprites/entities/whale_64x32.png" id="2_sjagy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwrlh"]
+size = Vector2(200, 80)
+
+[node name="whale" type="RigidBody2D" unique_id=69853859]
+script = ExtResource("1_qwrlh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1627217638]
+scale = Vector2(-3, 3)
+texture = ExtResource("2_sjagy")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1355855157]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1470125351]
+shape = SubResource("RectangleShape2D_qwrlh")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1405360068]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

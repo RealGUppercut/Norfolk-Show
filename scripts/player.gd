@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
-@export var max_speed = 350
-@export var default_speed = 150
-@export var speed = 150
+@export var max_speed = 300
+@export var default_speed = 100
+
+@export var speed = 100
 @export var time = 0
 
 var net_scale = Vector2(1, 1)
-var net_boosted_scale = Vector2(1.8, 1.8)
-var net_powerup_id = 0
-var net_is_big = false
+var net_grow_amount = 0.3
+var max_net_scale = Vector2(2.5, 2.5)
 
 func _ready():
 	GameEvent.net_powerup.connect(_on_net_powerup)
@@ -35,29 +35,20 @@ func _physics_process(delta):
 
 func _on_net_powerup():
 	print("=== NET SIGNAL RECEIVED ===")
-
-	if not net_is_big:
-		net_scale = net_boosted_scale
-		net_is_big = true
-		print("Net grew! scale: ", net_scale)
-	else:
-		print("Net already big - timer reset")
+	net_scale += Vector2(net_grow_amount, net_grow_amount)
+	net_scale.x = min(net_scale.x, max_net_scale.x)
+	net_scale.y = min(net_scale.y, max_net_scale.y)
 
 	if has_node("CollisionShape2D"):
 		$CollisionShape2D.scale = net_scale
 	if has_node("Sprite2D"):
 		$Sprite2D.scale = net_scale
 
-	net_powerup_id += 1
-	var current_power_up_id = net_powerup_id
+	print("Net grew! New scale: ", net_scale)
 
 	await get_tree().create_timer(10.0).timeout
 
-	if current_power_up_id != net_powerup_id:
-		return
-
 	net_scale = Vector2(1, 1)
-	net_is_big = false
 
 	if has_node("CollisionShape2D"):
 		$CollisionShape2D.scale = net_scale
