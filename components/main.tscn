@@ -112,7 +112,7 @@ texture = ExtResource("6_5nrm8")
 [node name="DifficultyScaler" type="Timer" parent="." unique_id=1038168362]
 autostart = true
 
-[node name="GoodFishSound" type="AudioStreamPlayer2D" parent="." unique_id=176482484 groups=["specialfish"]]
+[node name="GoodFishSound" type="AudioStreamPlayer2D" parent="." unique_id=176482484]
 stream = ExtResource("8_q15wk")
 
 [node name="BadFishSound" type="AudioStreamPlayer2D" parent="." unique_id=547017562]
