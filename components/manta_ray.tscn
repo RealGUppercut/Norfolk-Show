@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c0ljehx38xlhn"]
+
+[ext_resource type="Script" uid="uid://cgjxsxuyaek7t" path="res://scripts/manta_ray.gd" id="1_d04pf"]
+[ext_resource type="Texture2D" uid="uid://8jwawaod6577" path="res://sprites/entities/Manta_Ray_Small.png" id="2_d04pf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_713yu"]
+
+[node name="MantaRay" type="RigidBody2D" unique_id=1435334904]
+gravity_scale = 0.0
+script = ExtResource("1_d04pf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=948335197]
+texture = ExtResource("2_d04pf")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1977145183]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2000060650]
+shape = SubResource("CapsuleShape2D_713yu")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Area2D/CollisionShape2D" unique_id=847358262]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
