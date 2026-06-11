@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var speed = 60
+@export var speed = 75
 
 func _ready():
 	gravity_scale = 0
