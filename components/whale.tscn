@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://lk4k4tymd5js" path="res://scripts/whale.gd" id="1_qwrlh"]
 [ext_resource type="Texture2D" uid="uid://sqvb7k7p7knx" path="res://sprites/entities/whale_64x32.png" id="2_sjagy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwrlh"]
-size = Vector2(200, 80)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qwrlh"]
+radius = 25.0
+height = 156.0
 
 [node name="whale" type="RigidBody2D" unique_id=69853859]
 script = ExtResource("1_qwrlh")
@@ -17,7 +18,9 @@ texture = ExtResource("2_sjagy")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1470125351]
-shape = SubResource("RectangleShape2D_qwrlh")
+position = Vector2(-7, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_qwrlh")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1405360068]
 
