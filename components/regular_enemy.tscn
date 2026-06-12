@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://dgum4ljo6rfna"]
 
 [ext_resource type="Script" uid="uid://dc06vrmqfghsl" path="res://scripts/fish/basic_bad_fish.gd" id="1_ik2ra"]
+[ext_resource type="Shader" uid="uid://bjcse4v5vsvr1" path="res://components/glitch.gdshader" id="2_3mu0x"]
 [ext_resource type="Texture2D" uid="uid://p1tfni6e7blm" path="res://sprites/entities/fish_1.png" id="2_my5uu"]
 [ext_resource type="Script" uid="uid://c77mw4acurr26" path="res://scripts/fish/catching.gd" id="3_3mu0x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0ofw"]
+shader = ExtResource("2_3mu0x")
+shader_parameter/glitch_amount = 1.0
+shader_parameter/speed = 15.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vssqj"]
 
@@ -19,6 +25,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Mob" unique_id=235376093]
 z_index = 1
+material = SubResource("ShaderMaterial_i0ofw")
 texture = ExtResource("2_my5uu")
 
 [node name="Area2D" type="Area2D" parent="Mob" unique_id=562612597]
