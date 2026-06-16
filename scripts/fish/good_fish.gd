@@ -2,7 +2,7 @@ extends RigidBody2D
 
 enum FishType {
 	REGULAR,
-	NET,
+	SHIELD,
 	HEART,
 }
 
@@ -10,7 +10,7 @@ var fish_type = FishType.REGULAR
 
 var type_colors = {
 	FishType.REGULAR: Color(1, 1, 1),
-	FishType.NET: Color(2.0, 2.0, 0.0),
+	FishType.SHIELD: Color(2.0, 2.0, 0.0),
 	FishType.HEART: Color(2.0, 0.4, 0.6),
 }
 
@@ -38,10 +38,10 @@ func _on_area_2d_body_entered(body):
 			FishType.REGULAR:
 				GameEvent.score_added.emit(3)
 				print("Regular fish caught! +3 score")
-			FishType.NET:
+			FishType.SHIELD:
 				GameEvent.score_added.emit(1)
-				GameEvent.net_powerup.emit()
-				print("NET powerup collected!")
+				GameEvent.shield_powerup.emit()
+				print("SHIELD powerup collected!")
 			FishType.HEART:
 				GameEvent.score_added.emit(1)
 				GameEvent.heart_powerup.emit()
