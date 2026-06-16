@@ -13,7 +13,7 @@ var FishSpeed = 10
 
 # Spawn rates out of 100
 var heart_chance = 7
-var net_chance = 5
+var shield_chance = 87
 var mantaray_chance = 7
 var spearfish_chance = 8
 var seahorse_chance = 7
@@ -91,15 +91,15 @@ func roll_fish_type():
 	var roll = randi_range(1, 100)
 	if roll <= heart_chance:
 		return 2  # HEART
-	elif roll <= heart_chance + net_chance:
-		return 1  # NET
-	elif roll <= heart_chance + net_chance + seahorse_chance:
+	elif roll <= heart_chance + shield_chance:
+		return 1  # SHIELD
+	elif roll <= heart_chance + shield_chance + seahorse_chance:
 		return 3  # SEAHORSE
-	elif roll <= heart_chance + net_chance + seahorse_chance + whale_chance:
+	elif roll <= heart_chance + shield_chance + seahorse_chance + whale_chance:
 		return 4  # WHALE
-	elif roll <= heart_chance + net_chance + seahorse_chance + whale_chance + mantaray_chance:
+	elif roll <= heart_chance + shield_chance + seahorse_chance + whale_chance + mantaray_chance:
 		return 5  # MANTA RAY
-	elif roll <= heart_chance + net_chance + seahorse_chance + whale_chance + mantaray_chance + spearfish_chance:
+	elif roll <= heart_chance + shield_chance + seahorse_chance + whale_chance + mantaray_chance + spearfish_chance:
 		return 6  # SPEARFISH
 	else:
 		return 0  # REGULAR
