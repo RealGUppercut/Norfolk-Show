@@ -34,6 +34,22 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_kl7gn")
 
+[node name="ResumeButton" type="Button" parent="." unique_id=845789291]
+visible = false
+offset_left = -34.0
+offset_top = -82.0
+offset_right = 36.0
+offset_bottom = -51.0
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="." unique_id=1797104439]
+visible = false
+offset_left = -21.0
+offset_top = -49.0
+offset_right = 21.0
+offset_bottom = -18.0
+text = "Quit"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=135459363]
 scale = Vector2(0.42, 0.42)
 transform = Transform2D(0.42, 0, 0, 0.42, 0, 0)
@@ -72,10 +88,10 @@ vertical_alignment = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -129.0
-offset_right = 101.0
-offset_bottom = -36.0
+offset_left = -11.0
+offset_top = -130.0
+offset_right = 110.0
+offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -157,6 +173,7 @@ stream = ExtResource("9_vdvw4")
 [node name="SpecialFishSound" type="AudioStreamPlayer2D" parent="." unique_id=980725945]
 stream = ExtResource("10_vdvw4")
 
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/MantaAttack" to="CanvasLayer" method="_on_manta_attack_timeout"]
 [connection signal="timeout" from="Player/MovementTime" to="Player" method="_on_movement_time_timeout"]
 [connection signal="timeout" from="Player/ResetMoveSpeed" to="Player" method="_on_reset_move_speed_timeout"]

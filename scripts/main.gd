@@ -9,7 +9,10 @@ var shield_time_remaining = 0.0
 
 @onready var shield_timer_label = get_node_or_null("CanvasLayer/UI/ShieldTimer")
 
+var paused = false
+
 func _ready():
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	$ScoreLabel.text = "0"
 
 	if shield_timer_label:
@@ -26,6 +29,8 @@ func _ready():
 	print("=== MAIN READY ===")
 
 func _process(delta):
+	if Input.is_action_just_pressed("leave"):
+		game_over()
 	if shield_timer_label == null:
 		return
 
@@ -93,7 +98,7 @@ func game_over():
 func _on_shield_powerup():
 	print("SHIELD ACTIVATED")
 	is_shielded = true
-	shield_time_remaining = 10.0
+	shield_time_remaining = 5.0
 
 	if shield_timer_label:
 		shield_timer_label.visible = true
@@ -102,7 +107,7 @@ func _on_shield_powerup():
 	shield_id += 1
 	var current_shield_id = shield_id
 
-	await get_tree().create_timer(10.0).timeout
+	await get_tree().create_timer(5.0).timeout
 
 	if current_shield_id != shield_id:
 		return
@@ -117,4 +122,4 @@ func _on_shield_powerup():
 	print("Shield expired")
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	pass
+	paused = false
