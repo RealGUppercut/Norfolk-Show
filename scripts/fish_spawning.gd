@@ -12,12 +12,12 @@ var DifficultyScale = 1
 var FishSpeed = 10
 
 # Spawn rates out of 100
-var heart_chance = 7
-var shield_chance = 87
-var mantaray_chance = 7
-var spearfish_chance = 8
-var seahorse_chance = 7
-var whale_chance = 6
+var heart_chance = 20
+var shield_chance = 15
+var mantaray_chance = 60
+var spearfish_chance = 70
+var seahorse_chance = 50
+var whale_chance = 20
 
 func _on_timeout() -> void:
 	if DifficultyScale >= 1 and DifficultyScale < 2:
@@ -88,7 +88,7 @@ func spawn_random_y(AmountToSpawn):
 		get_parent().add_child(instance)
 
 func roll_fish_type():
-	var roll = randi_range(1, 100)
+	var roll = randi_range(1, 1000)
 	if roll <= heart_chance:
 		return 2  # HEART
 	elif roll <= heart_chance + shield_chance:
