@@ -70,5 +70,9 @@ offset_bottom = 252.0
 theme_override_font_sizes/font_size = 19
 text = "Return to menu"
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=98117183]
+position = Vector2(257, 138)
+zoom = Vector2(4.5, 4.5)
+
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="return_to_menu" to="." method="_on_return_to_menu_pressed"]
