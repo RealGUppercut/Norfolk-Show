@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ckjdmqmn353x5"]
+
+[ext_resource type="Script" uid="uid://crr76khq2lhsd" path="res://components/compendium.gd" id="1_8kl61"]
+[ext_resource type="Texture2D" uid="uid://d20m7x32bfa6o" path="res://sprites/backgrounds/compendium.png" id="2_il45u"]
+
+[node name="Compendium" type="Node2D" unique_id=105989454]
+script = ExtResource("1_8kl61")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1630236937]
+offset_right = 1414.0
+offset_bottom = 2000.0
+texture = ExtResource("2_il45u")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1022374550]
+position = Vector2(716, 999)
+zoom = Vector2(0.55, 0.55)
+
+[node name="Button" type="Button" parent="." unique_id=254883709]
+offset_left = 1210.0
+offset_top = 14.0
+offset_right = 1414.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
