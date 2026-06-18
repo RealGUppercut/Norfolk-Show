@@ -125,6 +125,7 @@ autostart = true
 script = ExtResource("6_pdxoy")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1299052819]
+zoom = Vector2(3.8, 3.8)
 
 [node name="Heart1" type="TextureRect" parent="." unique_id=804835059]
 offset_left = -250.0
